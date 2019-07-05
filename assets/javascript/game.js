@@ -57,4 +57,10 @@ $(".crystal-image").on("click", function() {
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
     alert("New score: " + counter);
+
+    if (counter === targetNumber) {
+        alert("You win!");
+    } else if (counter >= targetNumber) {
+        alert("You lose!");
+    }
 });
