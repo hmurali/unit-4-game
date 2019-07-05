@@ -6,12 +6,13 @@ $("#number-to-guess").text(targetNumber);
 
 // Keeping track of player's score. Initialized to 0.
 var counter = 0;
-
+$("#total-score").text(counter);
 // Keeping track of player's wins. Initialized to 0.
 var numWins = 0;
-
+$("#wins").text(numWins);
 // Keeping track of player's losses. Initialized to 0.
 var numLosses = 0;
+$("#losses").text(numLosses);
 
 // Creating an empty array: numberOptions.
 var numberOptions = [];
@@ -65,8 +66,14 @@ $(".crystal-image").on("click", function() {
     //alert("New score: " + counter);
     $("#total-score").text(counter);
     if (counter === targetNumber) {
-        alert("You win!");
+        //alert("You win!");
+        numWins++;
+        $("#wins").text(numWins);
+        $("#win-lose").text("You win!");
     } else if (counter >= targetNumber) {
-        alert("You lose!");
+        //alert("You lose!");
+        numLosses++;
+        $("#losses").text(numLosses);
+        $("#win-lose").text("You lose!");
     }
 });
