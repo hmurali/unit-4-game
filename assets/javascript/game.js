@@ -7,6 +7,12 @@ $("#number-to-guess").text(targetNumber);
 // Keeping track of player's score. Initialized to 0.
 var counter = 0;
 
+// Keeping track of player's wins. Initialized to 0.
+var numWins = 0;
+
+// Keeping track of player's losses. Initialized to 0.
+var numLosses = 0;
+
 // Creating an empty array: numberOptions.
 var numberOptions = [];
 
