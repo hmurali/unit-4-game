@@ -70,10 +70,21 @@ $(".crystal-image").on("click", function() {
         numWins++;
         $("#wins").text(numWins);
         $("#win-lose").text("You win!");
+        resetGame();
     } else if (counter >= targetNumber) {
         //alert("You lose!");
         numLosses++;
         $("#losses").text(numLosses);
         $("#win-lose").text("You lose!");
+        resetGame();
+    }
+
+    function resetGame(){
+        var targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+        $("#number-to-guess").text(targetNumber);
+        $("#wins").text(numWins);
+        $("#losses").text(numLosses);
+        counter = 0;
+        $("#total-score").text(counter);
     }
 });
