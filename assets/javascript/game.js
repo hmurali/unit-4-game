@@ -17,8 +17,8 @@ while(numberOptions.length < 4) {
     var r = Math.floor(Math.random()*12) + 1;
     if(numberOptions.indexOf(r) === -1) numberOptions.push(r);
 }
-document.write(numberOptions + " ");
-document.write("length of numberOptions: " + numberOptions.length);
+//document.write(numberOptions + " ");
+//document.write("length of numberOptions: " + numberOptions.length);
 
 // Creating crystals for every numberOption
 for(var i = 0; i < numberOptions.length; i++){
@@ -50,7 +50,7 @@ $(".crystal-image").on("click", function() {
 
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
-    alert("You clicked: " + crystalValue);
+    //alert("You clicked: " + crystalValue);
     // We then add the crystalValue to the user's "counter" which is a global variable.
     // Every click, from every crystal adds to the global counter.
     counter += crystalValue;
