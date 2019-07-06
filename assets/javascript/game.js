@@ -3,6 +3,7 @@ assigning it to targetNumber.
 */
 var targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
 $("#number-to-guess").text(targetNumber);
+numOptionsArrayForMyCrystalGame();
 
 // Keeping track of player's score. Initialized to 0.
 var counter = 0;
@@ -13,39 +14,6 @@ $("#wins").text(numWins);
 // Keeping track of player's losses. Initialized to 0.
 var numLosses = 0;
 $("#losses").text(numLosses);
-
-// Creating an empty array: numberOptions.
-var numberOptions = [];
-
-/* Dynamically populating the array, numberOptions with four random unique 
-numbers between 1 and 12 inclusive.
-*/
-while(numberOptions.length < 4) {
-    var r = Math.floor(Math.random()*12) + 1;
-    if(numberOptions.indexOf(r) === -1) numberOptions.push(r);
-}
-//document.write(numberOptions + " ");
-//document.write("length of numberOptions: " + numberOptions.length);
-
-// Creating crystals for every numberOption
-for(var i = 0; i < numberOptions.length; i++){
-    // Creating an imageCrystal for each iteration.
-    var imageCrystal = $("<img>");
-
-    // Each crystal will be given the class ".crystal-image".
-    // This will allow the CSS to take effect.
-    imageCrystal.addClass("crystal-image");
-
-    // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", "assets/images/crystal.jpg");
-
-    // Each imageCrystal will be given a data attribute called data-crystalValue.
-    // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
-
-    // Lastly, each crystal image (with all its classes and attributes) will get added to the page.
-    $("#crystals").append(imageCrystal);
-}
 
 // This time, our click event applies to every single crystal on the page. Not just one.
 $(".crystal-image").on("click", function() {
@@ -78,13 +46,56 @@ $(".crystal-image").on("click", function() {
         $("#win-lose").text("You lose!");
         resetGame();
     }
-
-    function resetGame(){
-        var targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-        $("#number-to-guess").text(targetNumber);
-        $("#wins").text(numWins);
-        $("#losses").text(numLosses);
-        counter = 0;
-        $("#total-score").text(counter);
-    }
 });
+
+function numOptionsArrayForMyCrystalGame() {
+    // Creating an empty array: numberOptions.
+    var numberOptions = [];
+
+    /* Dynamically populating the array, numberOptions with four random unique 
+    numbers between 1 and 12 inclusive.
+    */
+    while(numberOptions.length < 4) {
+        var r = Math.floor(Math.random()*12) + 1;
+        if(numberOptions.indexOf(r) === -1) numberOptions.push(r);
+    }
+    //document.write(numberOptions + " ");
+    //document.write("length of numberOptions: " + numberOptions.length);
+    // removing crystals for every numberOption
+    for(var i = 0; i < numberOptions.length; i++){
+        console.log($("#crystals").children());
+        //$("#crystals").children("img.crystal-length").remove();
+        $("#crystals").html("");
+    }
+    // Creating crystals for every numberOption
+    for(var i = 0; i < numberOptions.length; i++){
+        // Creating an imageCrystal for each iteration.
+        var imageCrystal = $("<img>");
+
+        // Each crystal will be given the class ".crystal-image".
+        // This will allow the CSS to take effect.
+        imageCrystal.addClass("crystal-image");
+
+        // Each imageCrystal will be given a src link to the crystal image
+        imageCrystal.attr("src", "assets/images/crystal.jpg");
+
+        // Each imageCrystal will be given a data attribute called data-crystalValue.
+        // This data attribute will be set equal to the array value.
+        imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+
+        // Lastly, each crystal image (with all its classes and attributes) will get added to the page.
+        $("#crystals").append(imageCrystal);
+    }
+    console.log("numberOptions: " + numberOptions);
+
+}
+function resetGame(){
+    var targetNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+    $("#number-to-guess").text(targetNumber);
+    $("#wins").text(numWins);
+    $("#losses").text(numLosses);
+    counter = 0;
+    $("#total-score").text(counter);
+    console.log("I'm called");
+    numOptionsArrayForMyCrystalGame();
+}
