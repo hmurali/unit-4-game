@@ -16,8 +16,8 @@ var numLosses = 0;
 $("#losses").text(numLosses);
 
 // This time, our click event applies to every single crystal on the page. Not just one.
-$(".crystal-image").on("click", function() {
-
+$(document).on("click", ".crystal-image", function() {
+    console.log("I'm called 2");
     // Determining the crystal's value requires us to extract the value from the data attribute.
     // Using the $(this) keyword specifies that we should be extracting crystal value of the clicked crystal.
     // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
@@ -39,7 +39,7 @@ $(".crystal-image").on("click", function() {
         $("#wins").text(numWins);
         $("#win-lose").text("You win!");
         resetGame();
-    } else if (counter >= targetNumber) {
+    } else if (counter > targetNumber) {
         //alert("You lose!");
         numLosses++;
         $("#losses").text(numLosses);
@@ -96,6 +96,7 @@ function resetGame(){
     $("#losses").text(numLosses);
     counter = 0;
     $("#total-score").text(counter);
+    console.log(counter);
     console.log("I'm called");
     numOptionsArrayForMyCrystalGame();
 }
