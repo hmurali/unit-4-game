@@ -17,7 +17,6 @@ $("#losses").text(numLosses);
 
 // This time, our click event applies to every single crystal on the page. Not just one.
 $(document).on("click", ".crystal-image", function() {
-    console.log("I'm called 2");
     // Determining the crystal's value requires us to extract the value from the data attribute.
     // Using the $(this) keyword specifies that we should be extracting crystal value of the clicked crystal.
     // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
@@ -25,22 +24,18 @@ $(document).on("click", ".crystal-image", function() {
 
     var crystalValue = ($(this).attr("data-crystalvalue"));
     crystalValue = parseInt(crystalValue);
-    //alert("You clicked: " + crystalValue);
     // We then add the crystalValue to the user's "counter" which is a global variable.
     // Every click, from every crystal adds to the global counter.
     counter += crystalValue;
 
     // All of the same game win-lose logic applies. So the rest remains unchanged.
-    //alert("New score: " + counter);
     $("#total-score").text(counter);
     if (counter === targetNumber) {
-        //alert("You win!");
         numWins++;
         $("#wins").text(numWins);
         $("#win-lose").text("You win!");
         resetGame();
     } else if (counter > targetNumber) {
-        //alert("You lose!");
         numLosses++;
         $("#losses").text(numLosses);
         $("#win-lose").text("You lose!");
@@ -59,12 +54,9 @@ function numOptionsArrayForMyCrystalGame() {
         var r = Math.floor(Math.random()*12) + 1;
         if(numberOptions.indexOf(r) === -1) numberOptions.push(r);
     }
-    //document.write(numberOptions + " ");
-    //document.write("length of numberOptions: " + numberOptions.length);
+    
     // removing crystals for every numberOption
     for(var i = 0; i < numberOptions.length; i++){
-        console.log($("#crystals").children());
-        //$("#crystals").children("img.crystal-length").remove();
         $("#crystals").html("");
     }
     // Creating crystals for every numberOption
@@ -86,7 +78,6 @@ function numOptionsArrayForMyCrystalGame() {
         // Lastly, each crystal image (with all its classes and attributes) will get added to the page.
         $("#crystals").append(imageCrystal);
     }
-    console.log("numberOptions: " + numberOptions);
 
 }
 function resetGame(){
@@ -96,7 +87,5 @@ function resetGame(){
     $("#losses").text(numLosses);
     counter = 0;
     $("#total-score").text(counter);
-    console.log(counter);
-    console.log("I'm called");
     numOptionsArrayForMyCrystalGame();
 }
