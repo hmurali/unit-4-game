@@ -9,6 +9,19 @@ body {
 
 #number-to-guess {
     font-weight: bold;
+    background: lightgreen;
+}
+
+#win-lose {
+    background: lightgreen;
+}
+
+#wins {
+    background: lightgreen;
+}
+
+#losses {
+    background: lightgreen;
 }
 
 #crystal-collector-heading {
@@ -17,6 +30,9 @@ body {
     background: lightgreen
 }
 
+h1 {
+    background: lightgreen;
+}
 ol {
     display: block;
     list-style-type: decimal;
